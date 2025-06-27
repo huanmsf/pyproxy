@@ -1,0 +1,107 @@
+# PyProxy 完整配置文件
+# 包含所有可用配置选项的完整示例
+
+# Trojan服务器配置
+trojan:
+  server: "your.trojan.server.com"  # 服务器地址 - 请修改为实际服务器地址
+  port: 443                     # 服务器端口 (1-65535) - 请修改为实际端口
+  password: "your_password_here"  # 密码 - 请修改为实际密码
+  verify_ssl: false             # 是否验证SSL证书 (true/false)
+  sni: "your.trojan.server.com"   # SNI (Server Name Indication)
+
+# 本地代理配置
+local:
+  listen: "127.0.0.1"          # 监听地址 (推荐127.0.0.1)
+  port: 1080                   # 监听端口 (1-65535)
+
+# 日志配置
+log:
+  level: "INFO"                # 日志级别: DEBUG, INFO, WARNING, ERROR
+  file: "logs/pyproxy.log"     # 日志文件路径 (空则输出到控制台)
+  verbose_traffic: true        # 是否显示详细流量日志
+  show_http_details: true      # 是否显示HTTP请求详情
+
+# 路由配置
+routing:
+  # 直连域名列表 (不走代理)
+  direct_domains:
+    # 国内主要网站
+    - "*.baidu.com"
+    - "*.qq.com"
+    - "*.weixin.qq.com"
+    - "*.taobao.com"
+    - "*.tmall.com"
+    - "*.alipay.com"
+    - "*.aliyun.com"
+    - "*.163.com"
+    - "*.netease.com"
+    - "*.sina.com.cn"
+    - "*.weibo.com"
+    - "*.douban.com"
+    - "*.zhihu.com"
+    - "*.bilibili.com"
+    - "*.jd.com"
+    - "*.pinduoduo.com"
+    - "*.meituan.com"
+    - "*.dianping.com"
+    - "*.ctrip.com"
+    - "*.qunar.com"
+    - "*.youku.com"
+    - "*.iqiyi.com"
+    - "*.tencent.com"
+    - "*.bytedance.com"
+    - "*.douyin.com"
+    - "*.xiaohongshu.com"
+    
+    # 政府和教育网站
+    - "*.gov.cn"
+    - "*.edu.cn"
+    - "*.ac.cn"
+    
+    # 本地和局域网
+    - "localhost"
+    - "127.0.0.1"
+    - "*.local"
+    - "192.168.*"
+    - "10.*"
+    - "172.16.*"
+    - "172.17.*"
+    - "172.18.*"
+    - "172.19.*"
+    - "172.20.*"
+    - "172.21.*"
+    - "172.22.*"
+    - "172.23.*"
+    - "172.24.*"
+    - "172.25.*"
+    - "172.26.*"
+    - "172.27.*"
+    - "172.28.*"
+    - "172.29.*"
+    - "172.30.*"
+    - "172.31.*"
+
+  # 代理域名列表 (走代理)
+  proxy_domains:
+    - "*"  # 其他所有域名都走代理
+
+# 防火墙绕过配置 (高级选项)
+bypass:
+  enabled: false               # 是否启用绕过功能
+  domain_fronting: false       # 是否启用域名前置
+  ip_fragmentation: false      # 是否启用IP分片
+  custom_dns: []              # 自定义DNS服务器列表
+  
+# 心跳监控配置 (高级选项)
+heartbeat:
+  enabled: true               # 是否启用心跳监控
+  interval: 5                 # 心跳间隔(秒)
+  timeout: 10                 # 连接超时(秒)
+  max_failures: 3            # 最大失败次数
+
+# 性能调优配置 (高级选项)
+performance:
+  connection_pool_size: 10    # 连接池大小
+  read_timeout: 300          # 读取超时(秒)
+  write_timeout: 30          # 写入超时(秒)
+  buffer_size: 8192          # 缓冲区大小(字节) 

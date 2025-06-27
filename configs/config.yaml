@@ -1,0 +1,48 @@
+# PyProxy 标准配置文件
+# 推荐的日常使用配置
+
+# Trojan服务器配置
+trojan:
+  server: "your.trojan.server.com"  # 服务器地址 - 请修改为实际服务器地址
+  port: 443                     # 服务器端口 - 请修改为实际端口
+  password: "your_password_here"  # 密码 - 请修改为实际密码
+  verify_ssl: false             # 是否验证SSL证书
+  sni: "your.trojan.server.com"   # SNI (Server Name Indication)
+
+# 本地代理配置
+local:
+  listen: "127.0.0.1"          # 监听地址
+  port: 1080                   # 监听端口
+
+# 日志配置
+log:
+  level: "INFO"                # 日志级别: DEBUG, INFO, WARNING, ERROR
+  file: ""                     # 日志文件 (空则输出到控制台)
+  verbose_traffic: false       # 是否显示详细流量日志
+  show_http_details: false     # 是否显示HTTP请求详情
+
+# 路由配置
+routing:
+  # 直连域名列表 (不走代理)
+  direct_domains:
+    - "*.baidu.com"
+    - "*.qq.com"
+    - "*.weixin.qq.com"
+    - "*.taobao.com"
+    - "*.tmall.com"
+    - "*.alipay.com"
+    - "*.aliyun.com"
+    - "*.163.com"
+    - "*.netease.com"
+    - "*.sina.com.cn"
+    - "*.weibo.com"
+    - "*.douban.com"
+    - "*.zhihu.com"
+    - "*.bilibili.com"
+    - "localhost"
+    - "127.0.0.1"
+    - "*.local"
+
+  # 代理域名列表 (走代理)
+  proxy_domains:
+    - "*"  # 其他所有域名都走代理 
